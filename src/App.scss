@@ -1,0 +1,54 @@
+.flexColumn{
+  display: flex;
+  flex-direction: column;
+}
+.flexRow{
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper {
+  background: lightskyblue;
+  padding: 2% 5%;
+  min-height: 100vh;
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    padding: 2px 4px;
+  }
+
+  header {
+    background: white;
+    padding: 8px 10px;
+  }
+
+  main {
+    .TaskBlock {
+      background: #eee;
+      padding: 5px;
+
+      > * {
+        > * {
+          margin: 0 5px;
+        }
+      }
+
+      .description {
+        min-height: 4em;
+      }
+
+      .completeArea {
+        display: flex;
+        align-items: flex-end;
+
+        #complete {
+          margin: 1px;
+        }
+      }
+    }
+  }
+}

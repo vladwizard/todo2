@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flexColumn {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.flexRow {
+  display: flex;
+  flex-direction: row;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wrapper {
+  background: lightskyblue;
+  padding: 2% 5%;
+  min-height: 100vh;
 }
+.wrapper * {
+  margin: 0;
+  padding: 0;
+}
+.wrapper button {
+  padding: 2px 4px;
+}
+.wrapper header {
+  background: white;
+  padding: 8px 10px;
+}
+.wrapper main .TaskBlock {
+  background: #eee;
+  padding: 5px;
+}
+.wrapper main .TaskBlock > * > * {
+  margin: 0 5px;
+}
+.wrapper main .TaskBlock .description {
+  min-height: 4em;
+}
+.wrapper main .TaskBlock .completeArea {
+  display: flex;
+  align-items: flex-end;
+}
+.wrapper main .TaskBlock .completeArea #complete {
+  margin: 1px;
+}
+
+/*# sourceMappingURL=App.css.map */
