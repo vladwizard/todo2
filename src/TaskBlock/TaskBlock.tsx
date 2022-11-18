@@ -1,32 +1,41 @@
 import React from "react";
 import {Task} from "../Types"
 
-
-export default function ({task, remove}: { task: any, remove: () => void }) {
-    const title = React.useState(task.title);
-    const description = React.useState(task.description);
-    const file = React.useState(task.file);
-    const date = React.useState(task.endData);
-    const complete = React.useState(task.complete);
-
+/**
+ * @param {string} task - ссылка на обьект с параметрами
+ * @param {string,string,string,string,boolean} title, description, file, endDate, complete - ссылка на обьект с параметрами
+ * @param {() => void} remove  - Функция удаления обекта с данными из массива
+ * @param {refresh: (key: string, value: any)=>void }} refresh  - Функция изменения в обьекте с данными, по ключу
+ */
+export default function ({task,title, description, file, endDate, complete, remove, refresh}:
+    {task:Task, title: string, description: string, file: string, endDate: string, complete: boolean, remove: () => void, refresh: (key: string, value: any)=>void }) {
     return (
         <div className="TaskBlock flexColumn">
             <input className='title' onChange={e => {
-                title[1](e.target.value)
-            }} value={title[0]}/>
-            <textarea className='description' onChange={e => description[1](e.target.value)} value={description[0]}/>
+                refresh('title', e.target.value)
+            }} value={title}/>
+            <textarea className='description' onChange={e => {
+                refresh('description', e.target.value)
+            }}
+                      value={description}/>
             <div className={"flexRow"}>
-                <input type="file" onChange={e => file[1](e.target.value)} value={file[0]}/>
-                <input onChange={e => date[1](e.target.value)} type="date"/>
+                <input type="file" onChange={e => {
+                    refresh('file', e.target.value)
+                }} value={file}/>
+                <input onChange={e => {
+                    refresh('endDate', e.target.value)
+                }} type="date" value={endDate}/>
                 <div className="completeArea">
                     <label htmlFor="complete">Завершена:</label>
-                    <input id="complete" type="checkbox" checked={complete[0]}
-                           onChange={e => complete[1](e.target.checked)}/>
+                    <input id="complete" type="checkbox" checked={complete}
+                           onChange={e => {
+                               refresh('complete', e.target.checked)
+                           }}/>
                 </div>
                 <button onClick={(e) => remove()
                 }>Удалить
                 </button>
-                {new Date(date[0]) < new Date() ? <p>Время кончилось</p> : ''}
+                {new Date(task.endDate) < new Date() ? <p>Время кончилось</p> : ''}
             </div>
         </div>
     );

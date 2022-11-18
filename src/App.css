@@ -22,13 +22,16 @@
 }
 .wrapper header {
   background: white;
-  padding: 8px 10px;
+  padding: 10px 10px;
 }
 .wrapper main .TaskBlock {
   background: #eee;
   padding: 5px;
 }
-.wrapper main .TaskBlock > * > * {
+.wrapper main .TaskBlock > div {
+  padding: 5px 0;
+}
+.wrapper main .TaskBlock > div > * {
   margin: 0 5px;
 }
 .wrapper main .TaskBlock .description {
