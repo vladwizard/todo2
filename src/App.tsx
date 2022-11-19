@@ -25,7 +25,7 @@ function App() {
     return (
         <div className="wrapper">
             <header>
-                <button onClick={() => AddTask()}>Add task</button>
+                <button onClick={AddTask}>Добавить задачу</button>
             </header>
             <main>
                 {tasks.map((task, index) =>

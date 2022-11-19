@@ -3,10 +3,10 @@ import {Task} from "../Types"
 
 /**
  * @param {string} task - ссылка на обьект с параметрами
- * @param {string,string,string,string,boolean} title, description, file, endDate, complete - ссылка на обьект с параметрами
  * @param {() => void} remove  - Функция удаления обекта с данными из массива
  * @Description  UseEffect - Переоопределяет поля при изменение массива данных, удалении елемента из мего
  */
+
 export default function ({task, tasks, remove}: { task: Task, tasks: Task[], remove: () => void }) {
     const title = React.useState(task.title);
     const description = React.useState(task.description);
@@ -21,7 +21,6 @@ export default function ({task, tasks, remove}: { task: Task, tasks: Task[], rem
         date[1](task.endDate)
         complete[1](task.complete)
     }, [tasks])
-    useEffect(() => console.log(32), [])
 
     return (
         <div className="TaskBlock flexColumn">
