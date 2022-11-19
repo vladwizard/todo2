@@ -8,11 +8,11 @@ import {Task} from "../Types"
  */
 
 export default function ({task, tasks, remove}: { task: Task, tasks: Task[], remove: () => void }) {
-    const [title,setTitle] = React.useState(task.title);
-    const [description,setDescription] = React.useState(task.description);
+    const [title, setTitle] = React.useState(task.title);
+    const [description, setDescription] = React.useState(task.description);
     const [file, setFile] = React.useState(task.file);
     const [endDate, setEndDate] = React.useState(task.endDate);
-    const [complete,setComplete] = React.useState(task.complete);
+    const [complete, setComplete] = React.useState(task.complete);
 
     useEffect(() => {
         setTitle(task.title)
