@@ -8,23 +8,25 @@
   flex-direction: row;
 }
 
+button {
+  padding: 4px 6px;
+}
+
 .wrapper {
   background: lightskyblue;
   padding: 2% 5%;
   min-height: 100vh;
-}
-.wrapper * {
-  margin: 0;
-  padding: 0;
-}
-.wrapper button {
-  padding: 2px 4px;
+  border-radius: 15px;
 }
 .wrapper header {
+  border-radius: 15px 15px 0 0;
   background: white;
   padding: 10px 10px;
+  display: flex;
+  gap: 10px;
 }
 .wrapper main .TaskBlock {
+  font-size: 20px;
   background: #eee;
   padding: 5px;
 }
@@ -34,15 +36,20 @@
 .wrapper main .TaskBlock > div > * {
   margin: 0 5px;
 }
+.wrapper main .TaskBlock > input, .wrapper main .TaskBlock textarea {
+  border: none;
+  height: 1.5em;
+  padding-left: 8px;
+}
+.wrapper main .TaskBlock > input:focus, .wrapper main .TaskBlock textarea:focus {
+  outline: none;
+}
+.wrapper main .TaskBlock input[type=checkbox] {
+  height: 20px;
+  width: 20px;
+}
 .wrapper main .TaskBlock .description {
   min-height: 4em;
-}
-.wrapper main .TaskBlock .completeArea {
-  display: flex;
-  align-items: flex-end;
-}
-.wrapper main .TaskBlock .completeArea #complete {
-  margin: 1px;
 }
 
 /*# sourceMappingURL=App.css.map */
