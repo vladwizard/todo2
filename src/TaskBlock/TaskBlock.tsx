@@ -1,80 +1,65 @@
-import React, { useEffect } from "react";
+import { useState } from "react";
 import { Task } from "../Types";
 
 /**
  * @param {string} task - ссылка на обьект с параметрами
  * @param {() => void} remove  - Функция удаления обекта с данными из массива
- * @Description  UseEffect - Переоопределяет поля при изменение массива данных, удалении елемента из мего
+ * @Description  reRender - Запускает ререндер при изменении в блоке, это не задействует вычисления, а описывает логику для reactа
  */
 
-export default function ({
-    task,
-    remove,
-}: {
-    task: Task;
-    remove: () => void;
-}) {
-    const [title, setTitle] = React.useState(task.title);
-    const [description, setDescription] = React.useState(task.description);
-    const [file, setFile] = React.useState(task.file);
-    const [endDate, setEndDate] = React.useState(task.endDate);
-    const [complete, setComplete] = React.useState(task.complete);
-
-    useEffect(() => {
-        setTitle(task.title);
-        setDescription(task.description);
-        setFile(task.file);
-        setEndDate(task.endDate);
-        setComplete(task.complete);
-    }, [task]);
+export default function ({ task, remove }: { task: Task; remove: () => void }) {
+    const [indexRender, setIndexRender] = useState(0);
+    function reRender() {
+        setIndexRender(indexRender + 1);
+    }
 
     return (
-        <div className="TaskBlock flexColumn">
+        <div className="TaskBlock flexColumn" onChange={() => { reRender() }}>
             <input
                 className="title"
                 onChange={(e) => {
-                    setTitle(e.target.value);
                     task.title = e.target.value;
+
                 }}
-                value={title}
+                value={task.title}
             />
             <textarea
                 className="description"
                 onChange={(e) => {
-                    setDescription(e.target.value);
                     task.description = e.target.value;
                 }}
-                value={description}
+                value={task.description}
             />
-            <div className={"flexRow"} style={{alignItems:"center"}}>
+            <div className={"flexRow"} style={{ alignItems: "center" }}>
                 <input
                     type="file"
                     onChange={(e) => {
-                        setFile(e.target.value);
                         task.file = e.target.value;
                     }}
-                    value={file}
+                    value={task.file}
                 />
                 <input
                     type="date"
                     onChange={(e) => {
-                        setEndDate(e.target.value);
                         task.endDate = e.target.value;
                     }}
-                    value={endDate}
+                    value={task.endDate}
                 />
 
                 <p>Завершена:</p>
                 <input
                     type="checkbox"
-                    checked={complete}
+                    checked={task.complete}
                     onChange={(e) => {
-                        setComplete(e.target.checked);
                         task.complete = e.target.checked;
                     }}
                 />
-                <button onClick={(e) => remove()}>Удалить</button>
-                {new Date(endDate) < new Date() ? <p>Время кончилось</p> : ""}
+                <button onClick={() => remove()}>Удалить</button>
+                {new Date(task.endDate) < new Date() ? (
+                    <p>Время кончилось</p>
+                ) : (
+                    ""
+                )}
             </div>
         </div>
     );
