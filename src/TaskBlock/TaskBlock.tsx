@@ -9,9 +9,9 @@ import "./TaskBlock.css"
  */
 
 export default function ({ task, remove }: { task: Task; remove: () => void }) {
-    const [indexRender, setIndexRender] = useState(0);
+    const [varRender, setVarRender] = useState(false);
     function reRender() {
-        setIndexRender(indexRender + 1);
+        setVarRender(!varRender);
     }
 
     return (
