@@ -1,0 +1,31 @@
+.TaskBlock {
+    font-size: 20px;
+    background: #eee;
+    padding: 5px;
+}
+.TaskBlock > div {
+    padding: 5px 0;
+}
+.TaskBlock > div > * {
+    margin: 0 5px;
+}
+.TaskBlock > input,
+.TaskBlock textarea {
+    border: none;
+    height: 1.5em;
+    padding-left: 8px;
+}
+.TaskBlock > input:focus,
+.TaskBlock textarea:focus {
+    outline: none;
+}
+.TaskBlock input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+}
+.TaskBlock .description {
+    min-height: 4em;
+}
+.TaskBlock .title {
+    font-size: 1.1rem;
+}

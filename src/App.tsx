@@ -15,8 +15,8 @@ function App() {
     function AddTask() {
         let newArray = tasks.slice();
         newArray.push({
-            title: "Название",
-            description: "Описание",
+            title: "",
+            description: "",
             file: "",
             endDate: "",
             complete: false,
@@ -30,14 +30,14 @@ function App() {
     }
 
     return (
-        <div className="wrapper">
+        <div className="mainBlock">
             <header>
                 <button onClick={AddTask}>Добавить задачу</button>
                 <button onClick={() => console.log(tasks)}>
                     console.log(tasks)
                 </button>
             </header>
-            <main>
+
                 {tasks.map((task, index) => (
                     <TaskBlock
                         key={index}
@@ -45,7 +45,7 @@ function App() {
                         remove={() => RemoveTask(index)}
                     />
                 ))}
-            </main>
+
         </div>
     );
 }

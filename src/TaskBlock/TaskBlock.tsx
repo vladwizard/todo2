@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Task } from "../Types";
+import "./TaskBlock.css"
 
 /**
  * @param {string} task - ссылка на обьект с параметрами
  * @param {() => void} remove  - Функция удаления обекта с данными из массива
- * @Description  reRender - Запускает ререндер при изменении в блоке, это не задействует вычисления, а описывает логику для reactа
+ * @Description  reRender - Запускает ререндер при изменении в блоке, это не задействует вычисления, а описывает логику для reactа; в релиз не допускактся
  */
 
 export default function ({ task, remove }: { task: Task; remove: () => void }) {
@@ -16,7 +17,8 @@ export default function ({ task, remove }: { task: Task; remove: () => void }) {
     return (
         <div className="TaskBlock flexColumn" onChange={() => { reRender() }}>
             <input
-                className="title"
+                className="title" 
+                placeholder="Название"
                 onChange={(e) => {
                     task.title = e.target.value;
 
@@ -25,6 +27,7 @@ export default function ({ task, remove }: { task: Task; remove: () => void }) {
             />
             <textarea
                 className="description"
+                placeholder="Описание"
                 onChange={(e) => {
                     task.description = e.target.value;
                 }}
