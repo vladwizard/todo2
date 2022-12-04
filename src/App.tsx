@@ -5,12 +5,14 @@ import { Task } from "./Types";
 
 /**
  * @description tasks - массив обьектов с данными задачи
+ * @description idIndex - симуляция уникаьльных id
  * @description AddTasks - функция добавления в массив
- * @description кнопка ShowTasks - кнопка для проверки, массива в родители, важно чтобы он отражал актуальные данные, для отправки на сервер, или других действий с ним
+ * @description RemoveTask - функция удаления из массива
  */
 
 function App() {
     const [tasks, setTasks] = useState<Task[]>([]);
+    const [idIndex, setidIndex] = useState(0);
 
     function AddTask() {
         let newArray = tasks.slice();
@@ -20,12 +22,14 @@ function App() {
             file: "",
             endDate: "",
             complete: false,
+            id: idIndex,
         });
         setTasks(newArray);
+        setidIndex(idIndex + 1);
     }
-    function RemoveTask(index:number) {
+    function RemoveTask(index: number) {
         let newArray = tasks.slice(0, index);
-        newArray.push(...tasks.slice(index + 1))
+        newArray.push(...tasks.slice(index + 1));
         setTasks(newArray);
     }
 
@@ -33,19 +37,15 @@ function App() {
         <div className="mainBlock">
             <header>
                 <button onClick={AddTask}>Добавить задачу</button>
-                <button onClick={() => console.log(tasks)}>
-                    console.log(tasks)
-                </button>
             </header>
 
-                {tasks.map((task, index) => (
-                    <TaskBlock
-                        key={index}
-                        task={task}
-                        remove={() => RemoveTask(index)}
-                    />
-                ))}
-
+            {tasks.map((task, index) => (
+                <TaskBlock
+                    key={task.id}
+                    task={task}
+                    remove={() => RemoveTask(index)}
+                />
+            ))}
         </div>
     );
 }

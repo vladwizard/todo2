@@ -4,4 +4,5 @@ export type Task = {
     file: string,
     endDate: string,
     complete: boolean,
+    id:number
 }

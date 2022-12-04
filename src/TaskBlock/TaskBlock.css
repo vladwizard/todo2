@@ -2,13 +2,9 @@
     font-size: 20px;
     background: #eee;
     padding: 5px;
+    gap: 5px;
 }
-.TaskBlock > div {
-    padding: 5px 0;
-}
-.TaskBlock > div > * {
-    margin: 0 5px;
-}
+
 .TaskBlock > input,
 .TaskBlock textarea {
     border: none;
@@ -28,4 +24,7 @@
 }
 .TaskBlock .title {
     font-size: 1.1rem;
+}
+.redacting{
+    background: rebeccapurple;
 }
